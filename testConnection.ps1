@@ -8,8 +8,9 @@ param(
 )
 
 # test exist file?
-if (test-path -path $filePath ne $true){
+if ((test-path -path $filePath) -ne $true){
     write-host "$filePath is not valid please try again "
+    exit
 }    
 
 
