@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     # path to list computers
-    [parameter()]
+    [parameter(Mandatory=$true)]
     [string] $filePath,
     #path to file that hold results of disconnected machine
     [string] $outputFile
