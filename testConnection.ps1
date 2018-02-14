@@ -6,13 +6,12 @@ param(
     #path to file that hold results of disconnected machine
     [string] $outputFile
 )
-
+#$ErrorActionPreference = 'Stop'
 # test exist file?
 Write-Verbose "check if filepath $filePath exist"
 if ((test-path -path $filePath) -ne $true){
-    write-host "$filePath is not valid please try again " -ForegroundColor red
-    return
-    #$ErrorActionPreference = "Stop" 
+    write-host "$filePath is not valid please try again" -ForegroundColor Red
+    exit 
 }
 
 # check validation of outputFile for OFLINE computers if request by parameter
@@ -36,6 +35,7 @@ else{
 function output ($computer) {
     $computer >> $outputFile    
 }
+Write-Host "get contents of computers.txt $filePath"
 $computersList = Get-Content -Path $filePath
 foreach ($computer in $computersList){
     Write-Verbose "running test-connection func on $computer"  
