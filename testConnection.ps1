@@ -8,9 +8,11 @@ param(
 )
 
 # test exist file?
+Write-Verbose "check if filepath $filePath exist"
 if ((test-path -path $filePath) -ne $true){
-    write-host "$filePath is not valid please try again "
-    exit
+    write-host "$filePath is not valid please try again " -ForegroundColor red
+    return
+    #$ErrorActionPreference = "Stop" 
 }
 
 # check validation of outputFile for OFLINE computers if request by parameter
